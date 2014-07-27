@@ -1,0 +1,45 @@
+
+  <!-- [START head_html] -->
+  <head>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/main.css">
+    <script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <!-- [END head_html] -->
+<div class="page-wrapper">
+<div class="navbar navbar-inverse" role="navigation" style="margin-bottom:-20px;">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Team 11</a>
+    </div>
+    <div class="collapse navbar-collapse pull-right">
+      <ul class="nav navbar-nav" >
+        
+        <li class="nav-list btn">
+          <a href="/thesis/home">THESIS</a>
+        </li>
+        <li class="nav-list btn">
+          <a href="/adviser/home">ADVISER</a>
+        </li>
+        <li class="nav-list btn">
+          <a href="/student/home">STUDENT</a>
+        </li>
+        <li class="drop2"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-top:8px">ABOUT US
+	        <b class="caret"></b>
+	      </a>
+	      <ul class="dropdown-menu">
+		      <li><a href="/member1">Member1</a></li>
+		      <li><a href="/member2">Member2</a></li>
+     	 </ul>
+      </li>
+        <li class="btn"><a href="{{ url|safe }}">{{name}} | {{ url_linktext }}</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

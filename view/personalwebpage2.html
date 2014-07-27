@@ -1,0 +1,122 @@
+<html>
+<head  >
+	<title>My Personal Webpage</title>
+</head>
+<style>
+div.transbox {
+    background-color: pink;
+    border: 5px solid #FF3399;
+    border-radius: 8px;
+    opacity: 0.8;
+    filter: alpha(opacity=8); 
+    border-radius: 8px;
+    width:80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+div.content{
+	margin-top: 5%;
+}
+td.aboutme{
+	background-color: #ffffff;
+    
+    opacity: 0.7;
+    filter: alpha(opacity=70); 
+    border-radius: 8px;
+    width:60%;
+}
+.wrapper table{
+  margin-top: 27px;
+}
+.wrapper div{
+  margin-top: 27px;
+}
+
+</style>
+<body >
+<div class="wrapper">
+<div class="transbox">
+<h1 >
+	
+	<span style="font-size:40px; font-style:oblique;font-family: verdana; padding-top: 15px;padding-bottom: 15px;padding-right: 100px;padding-left: 93px;">
+		Christelle Berboso Mangalindan 
+		</span>
+	
+
+</h1>
+</div>
+<table width=800px cellspacing="15px" style="margin-left:auto;margin-right:auto">
+	<tr>
+		<td >
+			<img src="/img/picture.jpg"/>
+		</td>
+		<td align="middle"bgcolor =pink style= "border-radius:10px; font-size: 30px;opacity:0.8 ">
+			<p ><em>"Life is not about getting and having, it is about giving and being."</em></font></p>
+		</td>
+	</tr>
+</table>
+
+<table width=800px cellspacing="15px" style="border-radius:10px; border-color:pink;margin-left:auto;margin-right:auto;">
+<tr style="border-radius:10px">
+	<td align="middle" rowspan="1" width=400px bgcolor= pink style= "border-radius:10px;opacity: 0.8;" >
+		<font face="verdana" color="#FF3399" ><b><br>ABOUT ME</br></b></font>
+		<font face="verdana"><p>  Education is my stepping stone to attain my dreams. Fortunately, I am a 5th year student in Computer Engineering now. Being creative and skillful in handicrafts are my strength. Maybe, that's the reason why I am always assigned in making prototypes.</p>
+		<p>I have a basic knowledge with Java, HTML, CSS, javascript, SQL and Python. Formerly, I became a part of the Data Migration and Integration Team at Cloud Sherpas as an intern. Some of the tools that I used was SQL server and Data Loader. I am always willing and determined to learn new ideas.</p></font>
+	</td>
+</tr>
+<table/>
+<table  width="800px" cellspacing="15px" style="border-radius:10px; border-color:pink;margin-left:auto;margin-right:auto">
+	<tr>
+		<td align="middle" rowspan="2" width="400px" bgcolor= "pink" style= " border-radius:10px; opacity: 0.8;">
+		<p align= "center"><font face= "verdana" color="#FF3399"><b>Contact Details</b></font><p>
+		<font align= "center" face = "calibri">
+              &nbsp&nbsp<img src="/img/mobile.png" width=25px height=25px></img>&nbsp&nbsp<em>(+63) 906 1618954</em>
+             <br> &nbsp&nbsp<img src="/img/mail.png" width=25px height=25px></img>&nbsp&nbsp<em>cmangalindan08@gmail.com</em></br>
+			 &nbsp&nbsp<img src="/img/yahoo.png" width=25px height=25px></img>&nbsp&nbsp<em>christellemangalindan@yahoo.com</em>
+            </font>
+		</td>
+		<td>&nbsp;&nbsp;</td>
+		<td align="middle" rowspan="2" width="400px" bgcolor= "pink" style="border-radius:10px;opacity: 0.8;">
+			<p align= "center"> <font face= "verdana" color="#FF3399"><b>Social Links</b></font></p>
+			<font align= "center" face = "calibri">
+             <a href="https://facebook.com/elletsirhc.nadnilagnam"> <img src="/img/Fb.png" width="50px" height="50px"/></a>
+             <a href="https://github.com/ChristelleMangalindan"><img src = "/img/github.png" width="50px" height="50px"/></a>
+             <a href="https://plus.google.com/u/0/"><img src = "/img/google.png" width="50px" height="50px"/></a>
+            </font>
+		</td>
+	</tr>
+	
+</table>
+
+
+<div style=" background-color:pink; width:700px; margin-left:auto;margin-right:auto;opacity: 0.8; border-radius: 5px "  >
+		<p align="center"><font face="verdana"><b>Write to my Guestbook!!!</b></font></p>
+
+<form action="/sign?guestbook_name={{name}}" method="post">
+	<div align="center"><textarea name="content" rows="3" cols="50"  class="form-control" placeholder="Write Something..." style="padding-left:10px"></textarea></div>
+        <br>
+        <div align="center"><input type="submit" value="Sign Guestbook" class="btn btn-primary"></div>
+
+</form>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <div style=" background-color: #F08080; width:600px;margin-left:5%;margin-right:auto;opacity: 0.8">
+          <h5 >
+          <font size= 5 face="calibri"><b>{{ greeting.author.nickname() }} wrote:</b></h5>
+        </div>
+      {% else %}
+        <div style=" background-color:#F08080 ; width:600px;height: 150 px;margin-right:auto;margin-left:5%;opacity: 0.8" >
+          <h5>
+            <font size= 5 face="calibri"><b>An anonymous person wrote:</b></h5>
+        </div>
+      {% endif %}
+      
+        <div style="background-color pink; width: 700px; margin-right:auto;margin-left:auto;margin-bottom:5%;padding: 1px 20px 1px 30px; border-radius:2px; " >
+          <font face= "verdana">{{ greeting.content }}</font>
+        </div >
+      
+    {% endfor %}
+  </div>
+  </div>
+</body>
+</html>

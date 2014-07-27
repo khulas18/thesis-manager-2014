@@ -1,0 +1,123 @@
+<html>
+<script type="text/javascript">
+	function clearForm(){
+		$("[name='first_name']").val("");
+		$("[name='last_name']").val("");
+		$("[name='phone_number']").val("");
+		$("[name='email']").val("");
+		$("[type='submit']").val("Create");
+		$("#regForm").attr('action',"/adviser/new");
+	}
+	function getTitleId(title){
+		if(title.indexOf('.')>-1){
+			title = title.substring(0,title.length-1);
+		}
+		return "#"+title;
+	}
+	function setFields(adviser){
+		adviser.title=getTitleId(adviser.title);
+		$(adviser.title).prop("selected",true);
+		$("#"+adviser.department).prop("selected",true);
+		$("[name='first_name']").val(adviser.first_name);
+		$("[name='last_name']").val(adviser.last_name);
+		$("[name='phone_number']").val(adviser.phone_number);
+		$("[name='email']").val(adviser.email);
+		$("[type='submit']").val("Submit");
+		$("#regForm").attr('action',"/adviser/view/"+adviser.id);
+	}
+	$(document).ready(function(){
+		$("#new").click(function(){
+			clearForm();
+		});
+
+	});
+</script>
+<div class="left-nav">
+	<div style="padding-top:50px">
+		<div class="menu">
+			<font size="4px" face="blackletter"><a href="#" id="new" data-toggle="modal" data-target="#newForm">Add New Adviser</a></font>
+		</div>
+		<div class="menu">
+			<font size="4px" face="blackletter"><a href="/adviser/list">List All Adviser</a></font>
+		</div>
+	</div>
+</div>
+
+	
+		
+<div class="modal fade" id="newForm">
+	<div class="modal-dialog">
+	<div class="modal-content">
+      	<div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        	<h4 class="modal-title">Create New Adviser</h4>
+      	</div>
+      		<form class="form-horizontal" role="form" id="regForm" action="/adviser/new" method="post" id="my-form">
+	      		<div class="modal-body">
+			      	<div class="form-group">
+				        <label class="col-sm-2 control-label">Title</label>
+				        <div class="col-sm-3">
+				            <select name="title" class="form-control">
+					            	<option id="Mr">Mr.</option>
+					            	<option id="Ms">Ms.</option>
+					            	<option id="Mrs">Mrs.</option>
+					            	<option id="Doctor">Doctor</option>
+					            	<option id="Engr">Engr.</option>
+		            		</select>
+				        </div>
+			      	</div>
+			      	
+		  <!-- Active   Inactive   Rejected   Pending   For Removal -->
+			      	<div class="form-group">
+				        <label class="col-sm-2 control-label">Firstname: </label>
+				        <div class="col-sm-10">
+				              <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+				        </div>
+			      	</div>
+
+			      	<div class="form-group">
+				        <label class="col-sm-2 control-label">Last Name: </label>
+				        <div class="col-sm-10">
+				            <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+				        </div>
+			      	</div>
+
+
+			      	<div class="form-group">
+				        <label class="col-sm-2 control-label">Email:</label>
+				        <div class="col-sm-10">
+				            <input type="email" name="email" class="form-control" placeholder="Email"required>
+				        </div>
+			      	</div>
+
+			      	<div class="form-group">
+				        <label class="col-sm-2 control-label">Phone Number:</label>
+				        <div class="col-sm-10">
+				            <input type="text" name="phone_number" class="form-control"  placeholder="Phone Number" required>
+				        </div>
+			      	</div>
+
+			      	<div class="form-group">
+				        <label class="col-sm-2 control-label">Department: </label>
+				        <div class="col-sm-3">
+				            <select name="department" class="form-control">
+				            	<option id="CoE">CoE</option>
+				            	<option id="ECE">ECE</option>
+				            	<option id="EE">EE</option>
+				            	<option id="IE">IE</option>
+				            	<option id="ME">ME</option>
+				            	<option id="CE">CE</option>
+				            </select>
+				        </div>
+			      	</div>
+	      		</div>
+		      	<div class="modal-footer">
+		        	<div type="button" class="btn btn-default" data-dismiss="modal">Close</div>
+		        	<input type="submit" class="button btn" name="Save Changes" class="form-control" value="Create">
+		      	</div>
+	      	</form>
+		</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+		
+	

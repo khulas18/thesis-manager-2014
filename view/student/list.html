@@ -1,0 +1,46 @@
+<script type="text/javascript">
+	var first_name = new Array({% for student in students -%}{% if loop.last %}"{{student.first_name}}"{% else %}"{{student.first_name}}",{% endif %}{%- endfor %});
+	var last_name = new Array({% for student in students -%}{% if loop.last %}"{{student.last_name}}"{% else %}"{{student.last_name}}",{% endif %}{%- endfor %});
+	var email = new Array({% for student in students -%}{% if loop.last %}"{{student.email}}"{% else %}"{{student.email}}",{% endif %}{%- endfor %});
+	var student_number = new Array({% for student in students -%}{% if loop.last %}"{{student.student_number}}"{% else %}"{{student.student_number}}",{% endif %}{%- endfor %});
+	var key = new Array({% for student in students -%}{% if loop.last %}"{{student.key.id()}}"{% else %}"{{student.key.id()}}",{% endif %}{%- endfor %});
+
+	$(document).ready(function(){
+		$(".editLink").click(function () {
+			id = $(this).attr('id')-1;
+			var student = {
+				first_name : first_name[id],
+				last_name : last_name[id],
+				student_number : student_number[id],
+				email : email[id],
+				id : key[id]
+			};
+			setFields(student);
+		});
+	})
+</script>
+
+<div class="content">
+	<div class="view">
+		<h1 class="textview">List of students</h1>
+		<table class="table table-hover" style="margin-top:30px">
+			<hr>
+			<tr>
+				<th>Name</th>
+				<th>Student Number</th>
+				<th>Link</th>
+			</tr>
+			<!-- Start Loop -->
+			{% for student in students %}
+				<tr style="border-radius:10px">
+					<td>{{student.title}} {{student.first_name}} {{student.last_name}}</a></td>
+					<td >{{student.student_number}}</td>
+					<td>
+						<a href="/student/view/{{student.key.id()}}">View</a> / 
+						<a href="#" id="{{loop.index}}" class="editLink" data-toggle="modal" data-target="#newForm">Edit</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>

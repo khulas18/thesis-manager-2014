@@ -1,0 +1,53 @@
+
+<script type="text/javascript">
+	var title = new Array({% for researches in researches -%}{% if loop.last %}"{{researches.title}}"{% else %}"{{researches.title}}",{% endif %}{%- endfor %});
+	var status1 = new Array({% for researches in researches -%}{% if loop.last %}"{{researches.status}}"{% else %}"{{researches.status}}",{% endif %}{%- endfor %},"","");
+	var school_year = new Array({% for researches in researches -%}{% if loop.last %}"{{researches.school_year}}"{% else %}"{{researches.school_year}}",{% endif %}{%- endfor %});
+
+	var key = new Array({% for researches in researches -%}{% if loop.last %}"{{researches.key.id()}}"{% else %}"{{researches.key.id()}}",{% endif %}{%- endfor %});
+
+	$(document).ready(function(){
+		$(".editLink").click(function () {
+			id = $(this).attr('id');
+			var description = $("#desc"+id).text();
+			id--;
+			var researches = {
+				title : title[id],
+				status : status1[id],
+				description : description,
+				school_year : school_year[id],
+				id : key[id]	
+			};
+			console.log(researches.status)
+			setFields(researches);
+		});
+	})
+</script>
+
+
+<div class="content">
+<div class= "view">
+	<h1 class="textview">List of Researches</h1>
+	<table class="table table-hover" style="margin-top:30px;">
+		<hr>	
+		<tr >
+			<th >Title</th>
+			<th>Status</th>
+			<th>Link</th>
+		</tr>
+		<!-- Start Loop -->
+		{% for researches in researches %}
+			<tr style="border-radius:10px">
+				<td style="text-align:left">{{researches.title}}</td>
+				<td>{{researches.status}}</td>
+				<td><a href="/thesis/view/{{researches.key.id()}}">View</a> / 
+					<a href="#" id="{{loop.index}}" class="editLink" data-toggle="modal" data-target="#newForm">Edit</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+<div>
+	{% for researches in researches -%}<div id="desc{{loop.index}}" style="display:none">{{researches.description}}</div>{%- endfor %}
+</div>
+</div>

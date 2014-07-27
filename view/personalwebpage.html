@@ -1,0 +1,213 @@
+<html>
+	<head>
+		<title>Personal Webpage</title>
+	</head>
+	<style>
+		.avatar{
+			padding: 10px;
+			padding-top: 10px;
+			margin-top: 10px;
+			
+		}
+		body{
+			background-size: 100% 120%;
+			opacity: 0.9;
+			color: white;
+		}
+		.info-container{
+			margin-left: 72px;
+			background-color: rgba(112,112,112,0.9);
+			margin-top: 9px;
+			width: 378px;
+			border-radius: 10px;
+			border-color: white;
+			border: 2px solid white;
+			padding: 5px;
+			float: none;		
+		}
+		.name{
+			text-align: bottom;
+			text-align: left;
+			color:white;
+			font-size: 30
+		}
+		.header{
+			width: 523;
+			background-color: gray;
+			border-radius: 10px;
+			margin-top: 124px;
+			border: 2px solid white;
+			padding-right: 5px;
+			z-index: 9999;
+			height: 165px;
+		}
+		.guestbook-container{
+			position: absolute;
+			top: 265;
+			float: left;
+			width:50%;
+			margin-left: 472px;
+			background-color:gray;
+			min-height: 100px;
+			margin-top: 10px;
+			border-radius: 10px;
+			border: 2px solid white;
+			padding: 5px;
+			z-index: 100;
+		}
+		.container2{
+			float:left; 
+			/* width:100%;  */
+		}
+		.panel .panel-heading{
+			/* background-color: #999966 ; */
+		}
+		.panel{
+			width:90%;
+			margin-left:5%;
+			margin-top: 50px;
+		}
+		.center{
+			text-align: center;
+			font-size: 40px;
+			font-style: italic;
+			padding-bottom: 5px;
+		}
+		.medium{
+			font-size: 30px;
+		}
+		.btn{
+			float:right;
+		}
+		.small-pic{
+			width:25px;
+			height:25px;
+		}
+		.medium-pic{
+			width: 50px;
+			height: 50px;
+		}
+		.container2{
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		.contacts .content2{
+			padding-left: 10px;
+		}
+		.social-network .content2 {
+			text-align: center;
+		}
+		.tagLine{
+			float: right;
+			position: absolute;
+			top: 62px;
+			
+			width:100%;
+			padding: 5px;
+			color: white;	
+			margin-left: 84;
+			margin-right: auto;
+			
+			text-align: center;
+			
+		}
+		
+		.wrapper{
+			min-width: 1280px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(fucntion(){
+			$(".page-wrapper").removeClass("page-wrapper");
+		});
+	</script>
+	<body background= "/img/bg.jpg">
+		<div class="wrapper">
+				<div class="header">
+					<span class="avatar" align="left">
+							<img src="/img/carlo.jpg" width="160" height="160">
+					</span>
+					<span class="name">
+						John Carlo M. Bambo
+					</span>
+				</div>
+				<div class="tagLine">
+					<h2>"I hated every minute of training, but I said, <br>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp dont quit. Suffer now and live the rest<br>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  of your life as a Champion"</h2>
+				</div>
+				<div class="container2">
+					<div class="info-container">
+						<div class="aboutMe">
+							<h4>About me:</h4>
+							<div class="content2">
+								<p>
+									I am a 5th year Computer Engineering student. I am proficient in making circuits and creating programs. Java is my preferred language in creating application. Javascript, HTML, CSS, PHP, Phython are some langauge that I learned during my days on school and OJT. 
+
+									The career path that I want to take on the near future is to be a game developer. By being a fast learner and by having the determination to learn, I know I can create a game that I want. As a preparation for that, I am studying Android if I have a free time.
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="contacts">
+							<h4>Contact Details:</h4>
+							<div class="content2">
+								<p>
+									<img src="/img/mobile.png" class="small-pic">&nbsp&nbsp&nbsp&nbsp(+63) 906 1618954 <br>
+						    		<img src="/img/mail.png" class="small-pic">&nbsp&nbsp&nbsp&nbspcarlobambo@gmail.com<br>
+						    		<img src="/img/yahoo.png" class="small-pic">&nbsp&nbsp&nbsp&nbspkhulas_18@yahoo.com<br>
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="social-network">
+							<h4>Social Links:</h5>
+							<div class="content2">
+								<a href="https://www.facebook.com/khulas18"><img src="/img/Fb.png" class="medium-pic">&nbsp&nbsp&nbsp&nbsp</a>
+								<a href="https://github.com/khulas18"><img src="/img/github.png" class="medium-pic">&nbsp&nbsp&nbsp&nbsp</a>
+								<a href="https://plus.google.com/u/0/110028056786465145265/posts"><img src="/img/google.png" class="medium-pic">
+								</a>	
+							</div>
+						</div>	
+					</div>
+				<div class="guestbook-container">
+					<div>
+						<div class="center">
+						Welcome to my Guestbook
+					</div>
+
+					<form action="/sign?guestbook_name={{ name }}" method="post">
+				        <div>
+				        	<textarea name="content" rows="3" cols="60"  class="form-control" placeholder="Write Something..."></textarea>
+				        </div>
+				        <br>
+				        <div>
+				        	<input type="submit" value="Sign Guestbook" class="btn btn-primary">
+				       	</div>
+					</form>
+					</div>
+					
+					<div class="panel panel-success">
+					    {% for greeting in greetings %}
+					      {% if greeting.author %}
+					        <div class="panel-heading">
+					          <h5 class="panel-title">{{ greeting.author.nickname() }} wrote:</h5>
+					        </div>
+					      {% else %}
+					        <div class="panel-heading">
+					          <h5 class="panel-title">
+					            An anonymous person wrote:</h5>
+					        </div>
+					      {% endif %}
+					      
+					        <div class="panel-body" style="color:black">
+					          {{ greeting.content }}
+					        </div>
+					    {% endfor %}
+					  </div>
+				      
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

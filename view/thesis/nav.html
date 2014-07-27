@@ -1,0 +1,128 @@
+
+<script type="text/javascript">
+	function clearForm(){
+		$("[name='title']").val("");
+		$("[name='school_year']").val("");
+		$("[name='status']").val("");
+		$("[name='description']").val("");
+		$("[type='submit']").val("Create");
+		$("#regForm").attr('action',"/thesis/new");
+	}
+	function setFields(thesis){
+		var regex = /<br\s*[\/]?>/gi;
+		thesis.description= thesis.description.replace(regex, "\n");
+		$("[name='title']").val(thesis.title);
+		
+		$('option:contains("'+thesis.school_year+'")').prop("selected", true);
+		$('option:contains("'+thesis.status+'")').prop("selected", true);
+
+		$("[name='description']").val(thesis.description);
+		$("[type='submit']").val("Submit");
+		$("#regForm").attr('action',"/thesis/view/"+thesis.id);
+	}
+	$(document).ready(function(){
+		$("#new").click(function(){
+			clearForm();
+		});
+	});
+</script>
+
+<div class="left-nav">
+	<div style="padding-top:50px">
+		<div class="menu">
+			<a href="#" id="new" data-toggle="modal" data-target="#newForm">Add Thesis</a>
+		</div>
+		<div class="menu">
+			<a href="/thesis/list">List All Research</a>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="modal fade center" id="newForm">
+		  	<div class="modal-dialog"  style="top:50px">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">Create New thesis</h4>
+			      	</div>
+			      		
+		      		<div class="modal-body">
+		      			<form class="form-horizontal" role="form" id="regForm" action="/thesis/new" method="post" id="my-form">						
+							<!-- Form Body -->
+						  	<div class="form-group">
+						        <label class="col-sm-2 control-label">Title</label>
+						        <div class="col-sm-10">
+						            <input type="text" class="form-control"  name="title" placeholder="Title" required>
+						        </div>
+						  	</div>
+
+						<!-- Active   Inactive   Rejected   Pending   For Removal -->
+						  	<div class="form-group">
+						        <label class="col-sm-2 control-label">Status</label>
+						        <div class="col-sm-10">
+						              <select class = "form-control" name="status" required>
+						              	<option id="Active">Active</option>
+						              	<option id="Inactive">Inactive</option>
+						              	<option id="Rejected">Rejected</option>
+						              	<option id="Pending">Pending</option>
+						              	<option id="For Removal">For Removal</option>
+						              </select>
+						        </div>
+						  	</div>
+
+						  	<div class="form-group">
+						        <label class="col-sm-2 control-label">School Year</label>
+						        <div class="col-sm-5">
+						            <select class="form-control" name="school_year" required>
+						            	<option>1990-1991</option>
+						            	<option>1991-1992</option>
+						            	<option>1992-1993</option>
+						            	<option>1993-1994</option>
+						            	<option>1994-1995</option>
+						            	<option>1995-1996</option>
+						            	<option>1996-1997</option>
+						            	<option>1997-1998</option>
+						            	<option>1998-1999</option>
+						            	<option>1999-2000</option>
+						            	<option>2000-2001</option>
+						            	<option>2001-2002</option>
+						            	<option>2002-2003</option>
+						            	<option>2003-2004</option>
+						            	<option>2004-2005</option>
+						            	<option>2005-2006</option>
+						            	<option>2006-2007</option>
+						            	<option>2007-2008</option>
+						            	<option>2008-2009</option>
+						            	<option>2009-2010</option>
+						            	<option>2010-2011</option>
+						            	<option>2011-2012</option>
+						            	<option>2012-2013</option>
+						            	<option>2013-2014</option>
+						            	
+
+						            </select>
+						        </div>
+						  	</div>
+
+						  	<div class="form-group">
+						        <label class="col-sm-2 control-label">Description</label>
+						        <div class="col-sm-10">
+						            <textarea type="text" class="form-control"  name="description" placeholder="Description" required rows="8"></textarea>
+						        </div>
+						  	</div>
+
+						  	<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+						  			<input type="submit" class="button btn" name="submit">
+								</div>
+							</div>
+
+			      	<!-- Form Body -->
+		      	</form>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>
+	

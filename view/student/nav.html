@@ -1,0 +1,89 @@
+<html>
+<script type="text/javascript">
+	function clearForm(){
+		$("[name='first_name']").val("");
+		$("[name='last_name']").val("");
+		$("[name='student_number']").val("");
+		$("[name='email']").val("");
+		$("[type='submit']").val("Create");
+		$("#regForm").attr('action',"/student/new");
+	}
+	function setFields(student){
+		$("[name='first_name']").val(student.first_name);
+		$("[name='last_name']").val(student.last_name);
+		$("[name='student_number']").val(student.student_number);
+		$("[name='email']").val(student.email);
+		$("[type='submit']").val("Submit");
+		$("#regForm").attr('action',"/student/view/"+student.id);
+	}
+	$(document).ready(function(){
+		$("#new").click(function(){
+			clearForm();
+		});
+
+	});
+</script>
+<body>
+
+
+
+	<div class="left-nav">
+			<div style="padding-top:50px">
+				<div class="menu">
+					<font size="4px" face="blackletter"><a href="#" id="new" data-toggle="modal" data-target="#newForm">Add New Student</a></font>
+				</div>
+				<div class="menu">
+					<font size="4px" face="blackletter"><a href="/student/list">List All Student</a></font>
+				</div>
+			</div>
+		</div>
+
+	
+		
+	<div class="modal fade center" id="newForm">
+		  	<div class="modal-dialog"  style="top:50px">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">Create New Student</h4>
+			      	</div>
+			      		
+		      		<div class="modal-body">
+		      			<form class="form-horizontal" role="form" id="regForm" action="/student/new" method="post" id="my-form">
+						      	
+							  <!-- Form Body -->
+					      	<div class="form-group">
+						        <label class="col-sm-3 control-label">First name: </label>
+						        <div class="col-sm-7">
+						              <input type="text" name="first_name" class="form-control" required placeholder="First Name">
+					    		</div>
+						    </div>
+						    <div class="form-group">
+						        <label class="col-sm-3 control-label">Last name: </label>
+						        <div class="col-sm-7">
+						              <input type="text" name="last_name" class="form-control" required placeholder="Last Name">
+						        </div>
+							</div>
+							<div class="form-group">
+						        <label class="col-sm-3 control-label">Email: </label>
+						        <div class="col-sm-7">
+						              <input type="text" name="email" class="form-control" required placeholder="Email">
+						        </div>
+							 </div>
+							<div class="form-group">
+						        <label class="col-sm-3 control-label">Student Number: </label>
+						        <div class="col-sm-7">
+						              <input type="text" name="student_number" class="form-control" required placeholder="Student Number">
+						        </div>
+							 </div>
+					      	<div class="modal-footer">
+					        	<div type="button" class="btn btn-default" data-dismiss="modal">Close</div>
+					        	<input type="submit" class="button btn" name="Save Changes" class="form-control" value="Create">
+					      	</div>
+					      	<!-- Form Body -->
+				      	</form>
+		    		</div><!-- /.modal-content -->
+		  		</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
+	

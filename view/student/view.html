@@ -1,0 +1,44 @@
+<script type="text/javascript">
+	var student = {
+				first_name : "{{student.first_name}}",
+				last_name : "{{student.last_name}}",
+				student_number : "{{student.student_number}}",
+				email : "{{student.email}}",
+				id : "{{student.key.id()}}"
+			};
+	$(document).ready(function(){
+		$(".editLink").click(function () {
+			setFields(student);
+		});
+	});
+	
+</script>
+
+
+<div class="content" style="padding-left:100px; padding-top:50px">
+	<div class="view">
+	<div id="view">
+		<div>
+			<font face="georgia" size="8px"><em> {{student.first_name}} {{student.last_name}}</em></font>
+			<span id="department" style="padding-left: 20px"></span>	
+		</div>
+		<hr>
+		<div style="padding:20px 20px 20px 20px;">
+		<div>
+			<span><strong> Student Number: </strong></span>
+			<span> {{student.student_number}}</span>
+		</div>
+
+		<div >
+			<span> <strong>Email: </strong></span>
+			<span>{{student.email}}</span>
+		</div>
+
+				<br>
+		<div >
+			<button href="#" class="editLink btn button" data-toggle="modal" data-target="#newForm">Edit</button>
+		</div>
+		</div>
+	</div>
+</div>
+</div>

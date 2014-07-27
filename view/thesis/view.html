@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		var desc = $("#description").text().replace(/\n/g, "<br//>");
+		var descForm = $("#description").text();
+		var research = {
+				title : "{{research.title}}",
+				school_year : "{{research.school_year}}",
+				status : "{{research.status}}",
+				description : descForm,
+				id : "{{research.key.id()}}"
+		};
+		$(".editLink").click(function () {
+			setFields(research);
+		});
+		$("#description").html(desc);
+	});
+	
+</script>
+
+
+<div class="content">
+<div class="view">
+	<div class="title">
+		<font face="georgia" size= "8px"><p><em>{{research.title}}</em> -  ({{research.school_year}},{{research.status}})</p></font>
+			</div>
+	
+	<div style="color:black">
+		<hr>
+	</div>
+	<div style="padding:20px 20px 20px 20px;">
+	
+	<font face="verdana" size="5px"><p id="description" >
+		{{- research.description -}}
+	</p></font>
+	</div>
+	<button href="#" class="editLink btn button" data-toggle="modal" data-target="#newForm">Edit</button>
+	</div>
+</div>

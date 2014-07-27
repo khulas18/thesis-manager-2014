@@ -1,0 +1,73 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#editButton").click(function(){
+			showEditForm();
+			var adviser = {
+				first_name : "{{adviser.first_name}}",
+				last_name : "{{adviser.last_name}}",
+				phone_number : "{{adviser.phone_number}}",
+				department : "{{adviser.department}}",
+				email : "{{adviser.email}}",
+				title : "{{adviser.title}}",
+				id : "{{adviser.key.id()}}"
+			};
+			setFields(adviser);
+		});
+
+		if ( document.location.href.indexOf('edit') > -1 ) {
+			$("#editButton").click();
+		}
+		function showEditForm(){
+			$("#editForm").show();
+		}
+
+		function getDefaultDept(department){
+			if(department=="CoE"){
+				return "Computer Engineering";
+			}else if(department=="ME"){
+				return "Mechanical Engineering";
+			}else if(department=="ECE"){
+				return "Electronics and Communications Engineering";
+			}else if(department == "EE"){
+				return "Electrical Engineering"
+			}else if(department = "IE"){
+				return "Industrial Engineering"
+			}else if(department = "CE"){
+				return "Civil Engineering"
+			}
+		}
+		$("#department").html(getDefaultDept("{{adviser.department}}")+" Department");	
+			
+	});
+	
+	
+
+</script>
+<div class="content" style="padding-left:100px; padding-top:50px">
+	<div class="view">
+	<div id="view">
+		<div>
+			<font face="georgia" size="8px"><em>{{adviser.title}} {{adviser.first_name}} {{adviser.last_name}}</em></font>
+			<span id="department" style="padding-left: 20px"></span>	
+		</div>
+		<hr>
+		<div style="padding:20px 20px 20px 20px;">
+		<div >
+			<span> <strong>Email: </strong></span>
+			<span>{{adviser.email}}</span>
+		</div>
+
+		<div>
+			<span><strong> Phone Number: </strong></span>
+			<span> {{adviser.phone_number}}</span>
+		</div>
+		<br>
+		<div class="btn button" id="editButton" data-toggle="modal" data-target="#newForm">
+			Edit
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+	<!--<div id="editForm" style="display:none"></div>-->
+
