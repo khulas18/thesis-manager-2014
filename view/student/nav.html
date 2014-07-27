@@ -20,6 +20,11 @@
 		$("#new").click(function(){
 			clearForm();
 		});
+		{% if not user %}
+		$(".editLink,#editButton,#new").removeAttr("data-toggle").click(function(){
+			alert('Please login to add/edit student.');
+		});
+		{% endif %}
 
 	});
 </script>
@@ -38,7 +43,7 @@
 			</div>
 		</div>
 
-	
+{% if user %}
 		
 	<div class="modal fade center" id="newForm">
 		  	<div class="modal-dialog"  style="top:50px">
@@ -86,4 +91,4 @@
 		  		</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 		</div>
-	
+{% endif %}

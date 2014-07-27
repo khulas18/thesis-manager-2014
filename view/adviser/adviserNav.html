@@ -29,13 +29,18 @@
 		$("#new").click(function(){
 			clearForm();
 		});
-
+		{% if not user %}
+		$(".editLink,#editButton,#new").removeAttr("data-toggle").click(function(){
+			alert('Please login to add/edit adviser.');
+		});
+		{% endif %}
 	});
+
 </script>
 <div class="left-nav">
 	<div style="padding-top:50px">
 		<div class="menu">
-			<font size="4px" face="blackletter"><a href="#" id="new" data-toggle="modal" data-target="#newForm">Add New Adviser</a></font>
+			<font size="4px" face="blackletter"><a href="javascript:void(0)" id="new" data-toggle="modal" data-target="#newForm">Add New Adviser</a></font>
 		</div>
 		<div class="menu">
 			<font size="4px" face="blackletter"><a href="/adviser/list">List All Adviser</a></font>
@@ -44,7 +49,7 @@
 </div>
 
 	
-		
+{% if user %}		
 <div class="modal fade" id="newForm">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -119,5 +124,5 @@
 		</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-		
+{% endif %}		
 	

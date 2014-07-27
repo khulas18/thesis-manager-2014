@@ -50,10 +50,6 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         write_template(self,'home.html')
 
-class PERSONAL_WEBPAGE_HANDLER(webapp2.RequestHandler):
-    def get(self):
-        write_template(self,'personalwebpage2.html')
-
 class Member1_Handler(webapp2.RequestHandler):
 
     def get(self):
@@ -79,11 +75,9 @@ application = webapp2.WSGIApplication([
     ('/thesis/view/(.*)', THESIS_VIEW_HANDLER),
     ('/thesis/home',THESIS_HOME_HANDLER),
     ('/',MainPage),
-    ('/mdodule-1/1',PERSONAL_WEBPAGE_HANDLER)
     ('/member1',Member1_Handler),
     ('/member2',Member2_Handler)
-    ('/member1',Member1_Handler),
-    ('/member2',Member2_Handler)
+    
 ], debug=True)
 
 

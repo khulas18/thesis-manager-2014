@@ -42,7 +42,7 @@
 				<td >{{adviser.department}}</td>
 				<td>
 					<a href="/adviser/view/{{adviser.key.id()}}"> View </a> /
-					<a href="#" id="{{loop.index}}" class="editLink" data-toggle="modal" data-target="#newForm">Edit</a>
+					<a href="javascript:void(0)" id="{{loop.index}}" class="editLink" data-toggle="modal" data-target="#newForm">Edit</a>
 				</td>
 			</tr>
 		{% endfor %}

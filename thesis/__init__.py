@@ -25,7 +25,7 @@ def write_template(self,template,template_values=None):
     nav = JINJA_ENVIRONMENT.get_template('nav.html')
     template = JINJA_ENVIRONMENT.get_template(template)
     self.response.write(header_template.render(header_values))
-    self.response.write(nav.render())
+    self.response.write(nav.render(user = users.get_current_user()))
     if template_values:
         self.response.write(template.render(template_values))
     else:

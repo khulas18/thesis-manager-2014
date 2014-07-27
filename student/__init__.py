@@ -37,11 +37,12 @@ def get_post(self,model):
 
 def write_template(self,template,template_values=None):
     header_values = get_user(self)
+    nav_val = {'user':users.get_current_user()}
     header_template = JINJA_HEADER_ENVIRONMENT.get_template('header.html')
     nav = JINJA_ENVIRONMENT.get_template('nav.html')
     template = JINJA_ENVIRONMENT.get_template(template)
     self.response.write(header_template.render(header_values))
-    self.response.write(nav.render())
+    self.response.write(nav.render(nav_val))
     if template_values:
         self.response.write(template.render(template_values))
     else:
@@ -69,14 +70,12 @@ class STUDENT_HOME_HANDLER(webapp2.RequestHandler):
         write_template(self,'home.html')
 
 class STUDENT_NEW_HANDLER(webapp2.RequestHandler):
-    def get(self):
-        write_template(self,'new.html')
     #create new entity
     def post(self):
         student = Student()
         get_post(self,student)
         #check if already exist
-        existing = get_existing_data(student.first_name,student.last_name)
+        existing = get_existing_data(student.student_number)
         if existing:
             for s in existing:
                 id = str(s.key.id())

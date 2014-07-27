@@ -49,11 +49,13 @@ def get_post(self,model):
     return model
 def write_template(self,template,template_values=None):
     header_values = get_user(self)
+    nav_values = {'user': users.get_current_user()}
     header_template = JINJA_HEADER_ENVIRONMENT.get_template('header.html')
     thesis_header = JINJA_ENVIRONMENT.get_template('adviserNav.html')
     template = JINJA_ENVIRONMENT.get_template(template)
     self.response.write(header_template.render(header_values))
-    self.response.write(thesis_header.render())
+    self.response.write(thesis_header.render(nav_values))
+
     if template_values:
         self.response.write(template.render(template_values))
     else:
